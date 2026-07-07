@@ -2,6 +2,24 @@
 
 Como transformar o ICM na versão que vai para as máquinas dos participantes. A pasta `oficina/` (esta) é só planejamento e fica de fora.
 
+## Status (aplicado em 07/07/2026)
+
+Já aplicado no `workspaces/workspace-builder`:
+
+- `setup/questionnaire.md`, `CLAUDE.md`, `CONTEXT.md` e os cinco `stages/*/CONTEXT.md` reescritos em pt-BR (modo oficina).
+- `shared/contexto-oficina.md` criado (evento, público, tom, metáfora da célula, meta do dia, gestão de tempo).
+- `meus-materiais/` criado com `LEIA-ME.md`.
+- Galeria de exemplos em pt-BR: `references/examples/caso-carlos.md`, `avaliador-de-salas.md`, `devolutivas.md`.
+- `references/publicar-no-github.md` criado (bloco opcional final).
+- Discovery (01) em modo oficina: mira 3 a 5 estágios, sem busca de skills no GitHub, aponta para `meus-materiais/` e os exemplos.
+
+Ainda falta:
+
+- CLAUDE.md e README da RAIZ do repositório limpo (em pt-BR, sem a pasta `oficina/`): fazer na criação do repo dos participantes.
+- Traduzir `references/examples/script-to-animation-summary.md` (opcional; é exemplo avançado, hoje em inglês).
+- Decidir com o Elton se os workspaces `script-to-animation` e `course-deck-production` saem da cópia das máquinas.
+- Personalização versão 2 (relógio ativo, voz dos facilitadores, transcrição de áudio).
+
 ## Estratégia de repositórios
 
 1. Este repositório (`oficina-concefor-icm`) é a bancada de trabalho: o planejamento vive em `oficina/` e as adaptações são aplicadas direto no `workspaces/workspace-builder`.

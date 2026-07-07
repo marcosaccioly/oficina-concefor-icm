@@ -1,43 +1,43 @@
-# Stage 02: Mapping
+# Estágio 02: Mapeamento
 
-Turn the workflow map into formal stage contracts and verify the dependency graph.
+Transformar o mapa do processo em contratos formais de estágio e verificar o grafo de dependências.
 
-## Inputs
+## Entradas
 
-| Source | File/Location | Section/Scope | Why |
-|--------|--------------|---------------|-----|
-| Previous stage | `../01-discovery/output/workflow-map.md` | Full file | The workflow to formalize |
-| Core conventions | `/_core/CONVENTIONS.md` | "Pattern 1: Stage Contracts" and "Pattern 3: One-Way Cross-References" | The rules for writing contracts |
+| Fonte | Arquivo/Local | Seção/Escopo | Por quê |
+|-------|---------------|--------------|---------|
+| Estágio anterior | `../01-discovery/output/workflow-map.md` | Arquivo todo | O processo a formalizar |
+| Convenções | `/_core/CONVENTIONS.md` | "Pattern 1: Stage Contracts" e "Pattern 3: One-Way Cross-References" | As regras para escrever contratos |
 
-## Process
+## Processo
 
-1. Read the workflow map from discovery output
-2. For each stage, write the formal Inputs/Process/Outputs contract following the stage contract pattern
-3. Map cross-references: which stages read from which other stages?
-4. Identify canonical sources: where does each piece of information live? (one home per fact)
-5. Check for circular references: draw the dependency graph and verify it flows one way only
-6. Verify every stage's output is consumed by at least one downstream stage (or is the final output)
-7. **[Checkpoint]** -- Present the dependency diagram and contracts to the user. Ask: Does the flow make sense? Any missing connections?
-8. Run the audit checks below. If any fail, revise before saving.
-9. Produce the contracts document with a dependency diagram
+1. Leia o mapa do processo, saída da descoberta.
+2. Para cada estágio, escreva o contrato formal de Entradas/Processo/Saídas, seguindo o padrão de contrato de estágio.
+3. Mapeie as referências cruzadas: quais estágios leem de quais outros?
+4. Identifique as fontes canônicas: onde vive cada informação? (uma casa por informação)
+5. Verifique referências circulares: desenhe o grafo de dependências e confirme que ele flui em um sentido só.
+6. Confirme que a saída de cada estágio é consumida por pelo menos um estágio seguinte (ou é a saída final).
+7. **[Ponto de parada]** Apresente o diagrama de dependências e os contratos. Pergunte: o fluxo faz sentido? Falta alguma ligação?
+8. Rode a auditoria abaixo. Se algo falhar, ajuste antes de salvar.
+9. Produza o documento de contratos com o diagrama de dependências.
 
-## Checkpoints
+## Pontos de parada
 
-| After Step | Agent Presents | Human Decides |
-|------------|---------------|---------------|
-| 6 | Dependency diagram and draft contracts for all stages | Whether the dependency flow and contract definitions are correct |
+| Depois do passo | O agente apresenta | O humano decide |
+|-----------------|--------------------|-----------------|
+| 6 | Diagrama de dependências e rascunho dos contratos de todos os estágios | Se o fluxo de dependências e os contratos estão corretos |
 
-## Audit
+## Auditoria
 
-| Check | Pass Condition |
-|-------|---------------|
-| No circular references | Dependency graph flows in one direction only |
-| Output consumption | Every stage's output is read by at least one downstream stage or is the final deliverable |
-| Contract completeness | Every stage has Inputs, Process, and Outputs sections with no empty fields |
-| Canonical sources | No piece of information is defined as authoritative in more than one stage |
+| Verificação | Condição de aprovação |
+|-------------|-----------------------|
+| Sem referências circulares | O grafo de dependências flui em um sentido só |
+| Consumo das saídas | A saída de cada estágio é lida por um estágio seguinte ou é a entrega final |
+| Contratos completos | Todo estágio tem Entradas, Processo e Saídas, sem campos vazios |
+| Fontes canônicas | Nenhuma informação é definida como oficial em mais de um estágio |
 
-## Outputs
+## Saídas
 
-| Artifact | Location | Format |
-|----------|----------|--------|
-| Stage contracts | `output/stage-contracts.md` | Formal Inputs/Process/Outputs blocks for every stage, plus ASCII dependency diagram |
+| Artefato | Local | Formato |
+|----------|-------|---------|
+| Contratos de estágio | `output/stage-contracts.md` | Blocos formais de Entradas/Processo/Saídas de cada estágio, mais o diagrama de dependências |

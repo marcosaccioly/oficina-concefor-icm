@@ -1,67 +1,78 @@
-# Workspace Builder
+# Construtor de Workspace (versão Oficina Concefor)
 
-This workspace guides you through building a new MWP workspace for any domain -- from understanding the workflow through generating a complete, validated workspace scaffold.
+Este workspace guia a construção de um novo workspace ICM para qualquer domínio, desde entender o fluxo de trabalho até gerar um esqueleto completo e validado.
 
-## Folder Map
+Nesta oficina, você (o agente) conduz um professor a transformar uma dor real do trabalho dele em um workspace reutilizável. Fale sempre em português do Brasil, com linguagem simples. Antes de começar, leia `shared/contexto-oficina.md` para se situar.
+
+## Mapa de pastas
 
 ```
 workspace-builder/
-├── CLAUDE.md              (you are here)
-├── CONTEXT.md             (start here for task routing)
+├── CLAUDE.md              (você está aqui)
+├── CONTEXT.md             (comece por aqui para o roteamento de tarefas)
 ├── setup/
-│   └── questionnaire.md   (onboarding -- asks about the domain you are building for)
+│   └── questionnaire.md   (onboarding: as 4 perguntas iniciais)
+├── shared/
+│   └── contexto-oficina.md (o evento, o público, o tom, a meta do dia)
+├── meus-materiais/        (onde o participante coloca os documentos dele)
 ├── stages/
-│   ├── 01-discovery/      (understand the domain workflow)
-│   ├── 02-mapping/        (formalize stage contracts and dependencies)
-│   ├── 03-scaffolding/    (generate the folder tree and files)
-│   ├── 04-questionnaire-design/  (build the onboarding questionnaire)
-│   └── 05-validation/     (verify against MWP conventions)
+│   ├── 01-discovery/      (entender o processo do participante)
+│   ├── 02-mapping/        (formalizar os contratos de estágio)
+│   ├── 03-scaffolding/    (gerar a estrutura de pastas: meta do dia)
+│   ├── 04-questionnaire-design/  (montar o questionário do novo workspace)
+│   └── 05-validation/     (validar contra as convenções do ICM)
 └── references/
-    ├── conventions-reference.md   (pointer to core MWP conventions)
+    ├── conventions-reference.md   (ponteiro para as convenções do ICM)
+    ├── publicar-no-github.md      (guia do bloco opcional final)
     └── examples/
-        └── script-to-animation-summary.md  (completed workspace example)
+        ├── caso-carlos.md         (PDF de aula vira aula interativa)
+        ├── avaliador-de-salas.md  (avaliar sala virtual no seu estilo)
+        ├── devolutivas.md         (devolutivas escritas para atividades)
+        └── script-to-animation-summary.md  (exemplo de workspace completo)
 ```
 
-## Triggers
+## Gatilhos
 
-| Keyword | Action |
-|---------|--------|
-| `setup` | Run onboarding -- asks about the domain you want to build a workspace for |
-| `status` | Show pipeline completion for all five stages |
+| Palavra | Ação |
+|---------|------|
+| `setup` | Roda o onboarding: as 4 perguntas iniciais sobre a dor e o processo |
+| `status` | Mostra o andamento dos cinco estágios |
 
-### How `status` works
+### Como o `status` funciona
 
-Scan `stages/*/output/` folders. For each stage, if the output folder contains files (other than .gitkeep), the stage is COMPLETE. Otherwise PENDING. Render:
+Verifique as pastas `stages/*/output/`. Para cada estágio, se a pasta `output/` tem arquivos além do `.gitkeep`, o estágio está COMPLETO. Senão, PENDENTE. Mostre:
 
 ```
-Pipeline Status: workspace-builder
+Andamento: workspace-builder
 
   [01-discovery]  -->  [02-mapping]  -->  [03-scaffolding]  -->  [04-questionnaire]  -->  [05-validation]
       STATUS              STATUS              STATUS                 STATUS                  STATUS
 ```
 
-## Routing
+## Roteamento
 
-| Task | Go To |
-|------|-------|
-| Start building a new workspace | `stages/01-discovery/CONTEXT.md` |
-| Formalize stage contracts | `stages/02-mapping/CONTEXT.md` |
-| Generate the workspace files | `stages/03-scaffolding/CONTEXT.md` |
-| Design the onboarding questionnaire | `stages/04-questionnaire-design/CONTEXT.md` |
-| Validate the workspace | `stages/05-validation/CONTEXT.md` |
+| Tarefa | Vá para |
+|--------|---------|
+| Começar a construir um novo workspace | `stages/01-discovery/CONTEXT.md` |
+| Formalizar os contratos de estágio | `stages/02-mapping/CONTEXT.md` |
+| Gerar os arquivos do workspace | `stages/03-scaffolding/CONTEXT.md` |
+| Desenhar o questionário de onboarding | `stages/04-questionnaire-design/CONTEXT.md` |
+| Validar o workspace | `stages/05-validation/CONTEXT.md` |
 
-## What to Load
+## O que carregar
 
-| Task | Load These | Do NOT Load |
-|------|-----------|-------------|
-| Discover workflow | `references/conventions-reference.md`, `references/examples/script-to-animation-summary.md` | `stages/02-mapping/` through `stages/05-validation/` |
-| Formalize contracts | `stages/01-discovery/output/`, `references/conventions-reference.md` | `references/examples/`, `stages/03-scaffolding/` through `stages/05-validation/` |
-| Generate scaffold | `stages/02-mapping/output/`, `references/conventions-reference.md`, `/_core/templates/*`, `/_core/placeholder-syntax.md` | `stages/01-discovery/`, `references/examples/` |
-| Design questionnaire | `stages/01-discovery/output/`, scaffolded workspace from stage 03, `/_core/templates/questionnaire-template.md` | `stages/02-mapping/`, `references/examples/` |
-| Validate workspace | Scaffolded workspace from stage 03, `stages/04-questionnaire-design/output/`, `/_core/CONVENTIONS.md` | `stages/01-discovery/`, `stages/02-mapping/`, `references/examples/` |
+| Tarefa | Carregue | NÃO carregue |
+|--------|----------|--------------|
+| Descobrir o processo | `shared/contexto-oficina.md`, `references/conventions-reference.md`, os exemplos em `references/examples/` | `stages/02-mapping/` até `stages/05-validation/` |
+| Formalizar contratos | `stages/01-discovery/output/`, `references/conventions-reference.md` | `references/examples/`, `stages/03-scaffolding/` até `stages/05-validation/` |
+| Gerar esqueleto | `stages/02-mapping/output/`, `references/conventions-reference.md`, `/_core/templates/*`, `/_core/placeholder-syntax.md` | `stages/01-discovery/`, `references/examples/` |
+| Desenhar questionário | `stages/01-discovery/output/`, esqueleto do estágio 03, `/_core/templates/questionnaire-template.md` | `stages/02-mapping/`, `references/examples/` |
+| Validar workspace | esqueleto do estágio 03, `stages/04-questionnaire-design/output/`, `/_core/CONVENTIONS.md` | `stages/01-discovery/`, `stages/02-mapping/`, `references/examples/` |
 
-## Stage Handoffs
+## Meta da oficina
 
-Each stage writes its output to its own `output/` folder. The next stage reads from there. If you edit an output file between stages, the next stage picks up your edits.
+A meta do dia é chegar ao Estágio 03 (scaffolding) com o esqueleto do workspace gerado. Os estágios 04 e 05 ficam como continuação depois da oficina. Detalhes em `shared/contexto-oficina.md`.
 
-The typical flow is sequential (01 through 05), but stage 05-validation also reads from stages 03 and 04 directly.
+## Handoffs entre estágios
+
+Cada estágio escreve seu resultado na própria pasta `output/`. O estágio seguinte lê de lá. Se você editar um arquivo de saída entre os estágios, o próximo estágio usa a sua versão editada.

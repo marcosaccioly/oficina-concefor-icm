@@ -31,8 +31,9 @@ Fonte canônica da preparação. Marcar os itens conforme forem concluídos.
 
 ## Software (adaptações)
 
-- [ ] Aplicar as mudanças de `adaptacoes-workspace-builder.md`
-- [ ] Criar o repositório limpo dos participantes (sem a pasta `oficina/`)
+- [x] Aplicar as mudanças de `adaptacoes-workspace-builder.md` (workspace-builder em pt-BR, contexto da oficina, exemplos, materiais e guia do GitHub; ver seção Status naquele arquivo)
+- [ ] Testar um `setup` completo na versão oficina do workspace-builder (Marcos ou Elton simulando um professor)
+- [ ] Criar o repositório limpo dos participantes (sem a pasta `oficina/`) e o CLAUDE.md/README da raiz em pt-BR
 - [ ] Ensaio geral cronometrado (Marcos e Elton simulando participantes)
 
 ## Comunicação

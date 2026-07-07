@@ -1,50 +1,45 @@
-# Stage 04: Questionnaire Design
+# Estágio 04: Desenho do questionário
 
-Build the onboarding questionnaire that hydrates the new workspace's placeholder variables.
+Montar o questionário de onboarding que preenche as variáveis do novo workspace. Na oficina, este estágio é continuação: você pode fazê-lo depois, com a IA, a partir do esqueleto gerado no Estágio 03.
 
-## Inputs
+## Entradas
 
-| Source | File/Location | Section/Scope | Why |
-|--------|--------------|---------------|-----|
-| Discovery output | `../01-discovery/output/workflow-map.md` | "User-Specific Variables" section | Variables that need onboarding questions |
-| Scaffolding output | `../03-scaffolding/output/` | All files containing `{{PLACEHOLDER}}` patterns | Know where every placeholder lives |
-| Template | `/_core/templates/questionnaire-template.md` | Full file | Format and design rules to follow |
-| Syntax | `/_core/placeholder-syntax.md` | Full file | Placeholder and conditional section rules |
+| Fonte | Arquivo/Local | Seção/Escopo | Por quê |
+|-------|---------------|--------------|---------|
+| Descoberta | `../01-discovery/output/workflow-map.md` | Seção de variáveis | As variáveis que precisam de perguntas |
+| Esqueleto | `../03-scaffolding/output/` | Todos os arquivos com `{{VARIAVEL}}` | Saber onde cada variável aparece |
+| Template | `/_core/templates/questionnaire-template.md` | Arquivo todo | Formato e regras de desenho a seguir |
+| Sintaxe | `/_core/placeholder-syntax.md` | Arquivo todo | Regras de variáveis e seções condicionais |
 
-## Process
+## Processo
 
-1. Read the workflow map's user-specific variables section
-2. Scan all markdown files in the scaffolded workspace for `{{PLACEHOLDER}}` patterns. Build a complete list.
-3. Split variables into two buckets:
-   - **System-level:** Things that stay the same across runs (identity, brand, design, tools, workflow preferences). These become setup questions.
-   - **Per-run:** Things that change each time the pipeline runs (project name, topic, audience, scope). These do NOT become setup questions. Instead, the entry stage's CONTEXT.md should collect them conversationally at the start of each run.
-4. For each system-level placeholder, write a question:
-   - Question text that a non-technical person can understand
-   - The placeholder(s) it populates
-   - The files where those placeholders appear
-   - Input type (free text, multiple choice, yes/no)
-   - A sensible default or example so the user can skip if they do not care
-5. For voice/style questions, ask for concrete examples rather than descriptions. "Give me 2-3 sentences that sound like your brand" extracts pattern-matchable rules. "Describe your voice" extracts an abstraction the agent must interpret. See Rule 7 in the questionnaire template.
-6. If a field can be derived from another answer, list it as a derived field under the source question. The agent fills derived fields without asking.
-7. Write ALL questions as a flat numbered list -- no category groupings. The user should be able to answer everything in a single message.
-8. Add conditional logic for optional stages: yes/no questions that remove folders or `{{?SECTION}}` blocks.
-9. If the workspace has voice/style rules with derived fields, add a two-pass process: after the agent populates rules from answers, it presents them to the user for review before finalizing. This catches misinterpretations.
-10. Verify every system-level placeholder has a corresponding question
-11. Verify per-run placeholders are handled by stage CONTEXT.md files, not the questionnaire
-12. Run the audit checks below. If any fail, revise before saving.
-13. Write the questionnaire.md
+1. Leia a seção de variáveis do mapa do processo.
+2. Varra todos os arquivos do esqueleto atrás de padrões `{{VARIAVEL}}`. Monte a lista completa.
+3. Separe as variáveis em dois grupos:
+   - **De sistema:** o que fica igual a cada uso (identidade, tom, design, preferências). Viram perguntas de setup.
+   - **De cada uso:** o que muda a cada trabalho (nome do projeto, tema, turma). NÃO viram perguntas de setup; o estágio de entrada coleta na conversa, no início de cada uso.
+4. Para cada variável de sistema, escreva uma pergunta: texto que uma pessoa não técnica entende, a variável que ela preenche, os arquivos onde aparece, o tipo de resposta e um exemplo ou padrão para quem quiser pular.
+5. Para perguntas de voz/estilo, peça exemplos concretos, não descrições. "Me dê 2 ou 3 frases que soam como você" extrai um padrão; "descreva seu tom" extrai uma abstração.
+6. Se um campo pode ser deduzido de outra resposta, liste-o como derivado. O agente preenche sem perguntar.
+7. Escreva TODAS as perguntas como uma lista numerada única, sem agrupamentos. A pessoa deve responder tudo em uma mensagem.
+8. Adicione lógica condicional para estágios opcionais: perguntas sim/não que removem pastas ou blocos `{{?SECAO}}`.
+9. Se houver regras de voz/estilo com campos derivados, adicione um segundo passo: depois de preencher as regras, apresente-as para a pessoa revisar antes de finalizar.
+10. Confira que toda variável de sistema tem uma pergunta.
+11. Confira que as variáveis de cada uso são tratadas pelos CONTEXT.md de estágio, não pelo questionário.
+12. Rode a auditoria abaixo. Se algo falhar, ajuste antes de salvar.
+13. Escreva o questionnaire.md.
 
-## Audit
+## Auditoria
 
-| Check | Pass Condition |
-|-------|---------------|
-| Placeholder coverage | Every system-level placeholder in the workspace has a corresponding question |
-| Per-run separation | No per-run variables appear in the questionnaire (they belong in stage CONTEXT.md files) |
-| Flat structure | All questions are in a single numbered list with no category groupings |
-| Defaults present | Every question has a sensible default or example |
+| Verificação | Condição de aprovação |
+|-------------|-----------------------|
+| Cobertura de variáveis | Toda variável de sistema tem uma pergunta correspondente |
+| Separação por uso | Nenhuma variável de cada uso aparece no questionário |
+| Estrutura plana | Todas as perguntas em uma lista numerada única, sem agrupamentos |
+| Exemplos presentes | Toda pergunta tem um padrão ou exemplo |
 
-## Outputs
+## Saídas
 
-| Artifact | Location | Format |
-|----------|----------|--------|
-| Questionnaire | `output/questionnaire.md` | Flat, all-at-once questionnaire for the new workspace's setup/ folder |
+| Artefato | Local | Formato |
+|----------|-------|---------|
+| Questionário | `output/questionnaire.md` | Questionário plano, tudo de uma vez, para a pasta setup/ do novo workspace |

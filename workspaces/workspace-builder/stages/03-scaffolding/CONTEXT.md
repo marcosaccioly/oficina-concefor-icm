@@ -1,60 +1,54 @@
-# Stage 03: Scaffolding
+# Estágio 03: Geração do esqueleto
 
-Generate the complete workspace folder structure, CONTEXT.md files, and placeholder reference files.
+Gerar a estrutura completa de pastas, os arquivos CONTEXT.md e os arquivos de referência com variáveis. Esta é a meta do dia na oficina: sair com o esqueleto do workspace gerado.
 
-## Inputs
+## Entradas
 
-| Source | File/Location | Section/Scope | Why |
-|--------|--------------|---------------|-----|
-| Previous stage | `../02-mapping/output/stage-contracts.md` | Full file | The contracts to implement as folders and files |
-| Discovery output | `../01-discovery/output/workflow-map.md` | "Tool Prerequisites" and "Selected Skills" sections | Tools that need setup guides, skills to bundle |
-| Template | `/_core/templates/stage-context-template.md` | Full file | Template for stage CONTEXT.md files (includes Checkpoints and Audit sections) |
-| Template | `/_core/templates/workspace-claude-template.md` | Full file | Template for the workspace CLAUDE.md (includes What to Load section) |
-| Template | `/_core/templates/workspace-context-template.md` | Full file | Template for the workspace CONTEXT.md |
-| Syntax | `/_core/placeholder-syntax.md` | Full file | How to write placeholder variables |
+| Fonte | Arquivo/Local | Seção/Escopo | Por quê |
+|-------|---------------|--------------|---------|
+| Estágio anterior | `../02-mapping/output/stage-contracts.md` | Arquivo todo | Os contratos a virar pastas e arquivos |
+| Descoberta | `../01-discovery/output/workflow-map.md` | Seções de estágios opcionais e materiais | Estágios que podem ser removidos, documentos do participante |
+| Template | `/_core/templates/stage-context-template.md` | Arquivo todo | Modelo dos CONTEXT.md de estágio |
+| Template | `/_core/templates/workspace-claude-template.md` | Arquivo todo | Modelo do CLAUDE.md do workspace |
+| Template | `/_core/templates/workspace-context-template.md` | Arquivo todo | Modelo do CONTEXT.md do workspace |
+| Sintaxe | `/_core/placeholder-syntax.md` | Arquivo todo | Como escrever as variáveis |
 
-## Process
+## Processo
 
-1. Read the stage contracts from mapping output
-2. Create the workspace folder structure:
-   - Root: CLAUDE.md, CONTEXT.md, setup/
-   - Context folder (brand-vault or domain equivalent) with its own CONTEXT.md
-   - stages/ with one numbered subfolder per stage, each containing CONTEXT.md, output/, and references/
-   - shared/ for cross-stage reference files
-   - skills/ if any skills were selected during discovery
-3. Populate each stage CONTEXT.md using the template, filled with the contract's inputs, process, and outputs. For each stage, determine:
-   - **Checkpoints:** Does this stage benefit from human steering between steps? Creative stages (writing, design, ideation) should have at least one checkpoint. Linear stages (extract, render, validate) can skip the section.
-   - **Audit:** Does this stage need quality checks before output is written? Creative and build stages should have an audit table with specific pass conditions. Data extraction or file conversion stages can skip the section.
-   - Delete the Checkpoints or Audit sections from the template if the stage does not need them.
-4. Create the workspace CLAUDE.md using the template: folder map, triggers, routing table, and What to Load section mapping each task to its minimal file set
-5. Create the workspace CONTEXT.md using the template: task routing table, shared resources
-6. Create placeholder reference files for each stage with `{{PLACEHOLDER}}` variables for user-specific content
-7. For content-producing workspaces, create a value framework reference file (see Pattern 13)
-8. For code-producing workspaces, create a shared constants file or pattern (see Pattern 15)
-9. Create the context folder (brand-vault equivalent) with placeholder files. If the workspace produces voice/style content, structure voice rules with Hard Constraints, Sentence Rules, and Pacing sections (not a single description placeholder)
-10. If skills were selected during discovery, create a skills/ folder:
-    - For local skills (found in `~/.claude/skills/` or `~/.agents/skills/`): copy the entire skill folder into `skills/[skill-name]/`
-    - For GitHub skills: clone the repo and copy the skill folder in, or note the clone command in a setup guide
-    - Remove any custom reference files that the skill replaces (avoid duplication)
-    - Update stage CONTEXT.md Inputs tables to reference `../../skills/[name]/SKILL.md` instead of deleted reference files
-11. If tools were identified that require system-level installation (Node.js, Python, LibreOffice), write a setup guide in the relevant stage's `references/` folder. Tools bundled inside skills do not need separate setup guides.
-12. Add .gitkeep files in all output/ directories
-13. Run the audit checks below. If any fail, fix before saving.
-14. Write everything to output/
+1. Leia os contratos de estágio, saída do mapeamento.
+2. Crie a estrutura de pastas do workspace:
+   - Raiz: CLAUDE.md, CONTEXT.md, setup/
+   - Pasta de contexto (equivalente ao brand-vault do domínio) com o próprio CONTEXT.md
+   - stages/ com uma subpasta numerada por estágio, cada uma com CONTEXT.md, output/ e references/
+   - shared/ para arquivos de referência usados em vários estágios
+3. Preencha cada CONTEXT.md de estágio usando o template, com as entradas, o processo e as saídas do contrato. Para cada estágio, decida:
+   - **Pontos de parada:** o estágio se beneficia de o humano conduzir entre os passos? Estágios criativos (escrever, desenhar, idealizar) devem ter pelo menos um. Estágios lineares (extrair, gerar, validar) podem pular.
+   - **Auditoria:** o estágio precisa de conferência de qualidade antes de salvar? Estágios criativos e de construção devem ter. Apague as seções que o estágio não precisa.
+4. Crie o CLAUDE.md do workspace: mapa de pastas, gatilhos, tabela de roteamento e a seção "o que carregar".
+5. Crie o CONTEXT.md do workspace: tabela de roteamento e recursos compartilhados.
+6. Crie os arquivos de referência de cada estágio, com variáveis `{{VARIAVEL}}` para o conteúdo que muda de pessoa para pessoa.
+7. Para workspaces que produzem conteúdo, crie um arquivo de referência com o framework de valor.
+8. Para workspaces que produzem código, crie um arquivo de constantes compartilhadas.
+9. Crie a pasta de contexto (equivalente ao brand-vault) com arquivos de variáveis. Se o workspace produz textos com voz/estilo, estruture as regras de tom com exemplos concretos, não uma descrição só.
+10. Adicione arquivos .gitkeep em todas as pastas output/.
+11. Rode a auditoria abaixo. Se algo falhar, corrija antes de salvar.
+12. Escreva tudo em output/.
 
-## Audit
+Observação para a oficina: as máquinas já vêm prontas, então não há passos de instalação de ferramentas nem busca de skills. Se o mapa do processo não trouxer essas seções, siga sem elas.
 
-| Check | Pass Condition |
-|-------|---------------|
-| Folder structure | Every stage has CONTEXT.md, output/, and references/ |
-| Contract fidelity | Every stage CONTEXT.md matches the contracts from Stage 02 |
-| Placeholder syntax | All placeholders use `{{SCREAMING_SNAKE_CASE}}` format |
-| .gitkeep coverage | Every output/ directory contains a .gitkeep file |
-| CONTEXT.md size | No CONTEXT.md file exceeds 80 lines |
-| Naming conventions | All folders and files use lowercase-with-hyphens |
+## Auditoria
 
-## Outputs
+| Verificação | Condição de aprovação |
+|-------------|-----------------------|
+| Estrutura de pastas | Todo estágio tem CONTEXT.md, output/ e references/ |
+| Fidelidade ao contrato | Cada CONTEXT.md bate com os contratos do Estágio 02 |
+| Sintaxe das variáveis | Todas as variáveis usam o formato `{{MAIUSCULAS_COM_UNDERSCORE}}` |
+| Cobertura de .gitkeep | Toda pasta output/ tem um .gitkeep |
+| Tamanho dos CONTEXT.md | Nenhum CONTEXT.md passa de 80 linhas |
+| Convenções de nome | Todas as pastas e arquivos usam minúsculas-com-hífen |
 
-| Artifact | Location | Format |
-|----------|----------|--------|
-| Generated workspace | `output/` | Complete folder structure with all files. Ready for questionnaire design. |
+## Saídas
+
+| Artefato | Local | Formato |
+|----------|-------|---------|
+| Workspace gerado | `output/` | Estrutura completa de pastas e arquivos, pronta para o desenho do questionário |

@@ -1,54 +1,50 @@
-# Stage 01: Discovery
+# Estágio 01: Descoberta
 
-Understand the domain workflow through conversation with the user.
+Entender o processo do participante através de uma conversa. Modo oficina: em português, começando pela dor e conduzindo para o processo.
 
-## Inputs
+## Entradas
 
-| Source | File/Location | Section/Scope | Why |
-|--------|--------------|---------------|-----|
-| User | (conversation) | Full workflow description | The domain to build a workspace for |
-| Reference | `../../references/conventions-reference.md` | Full file | Know the MWP patterns to discover toward |
-| Reference | `../../references/examples/script-to-animation-summary.md` | Full file | Concrete example of a completed workspace |
+| Fonte | Arquivo/Local | Seção/Escopo | Por quê |
+|-------|---------------|--------------|---------|
+| Contexto | `../../shared/contexto-oficina.md` | Arquivo todo | Tom, público e meta da oficina |
+| Participante | (conversa) e respostas do setup | Descrição do processo | O domínio a mapear |
+| Materiais | `../../meus-materiais/` | Arquivos que a pessoa trouxe | Entender o processo real dela |
+| Exemplos | `../../references/examples/` | O caso mais parecido | Inspiração concreta |
+| Referência | `../../references/conventions-reference.md` | Arquivo todo | Padrões do ICM a mirar |
 
-## Process
+## Processo
 
-1. Ask the user to describe their workflow end to end. What do they start with? What do they end with?
-2. Identify the distinct stages. Where does one task end and another begin? Look for natural handoff points where a human might want to review or edit before continuing.
-3. For each stage, ask:
-   - What goes in? (files, user input, previous stage output)
-   - What comes out? (the artifact this stage produces)
-   - What does the agent need to know? (reference material, rules, constraints)
-4. Identify shared context. What information is used across multiple stages? (brand voice, design system, audience data)
-5. Identify user-specific details. What varies from one user to another? (brand name, colors, audience, platform). These become placeholder variables.
-6. Identify optional stages. Are there stages some users might skip? These become conditional sections.
-7. Identify tool prerequisites. For each stage, ask: does this stage need any external tools to work? (e.g., Node.js, Python, LibreOffice, ffmpeg). For each tool, note: which stage needs it, whether it is required or optional, and what it does. These become setup guides in the generated workspace.
-8. Discover relevant skills. Based on the domain, search for Claude Code skills that would give agents domain-specific knowledge:
-   a. Scan `~/.claude/skills/` and `~/.agents/skills/` for locally installed skills that match the domain
-   b. Search GitHub for popular skill repos (e.g., "remotion skill", "pptx skill", "[domain] claude skill")
-   c. Present candidates to the user with a brief description of what each skill provides
-   d. Let the user pick which skills to bundle into the workspace
-   e. Note: skills can replace custom reference docs and prerequisites when they cover the same ground (e.g., a pptx skill bundles scripts that would otherwise need a separate install step)
-9. **[Checkpoint]** -- Present the workflow map draft to the user. Ask: Are all stages captured? Any missing inputs or outputs? Any stages to combine or split?
-10. Run the audit checks below. If any fail, revise before saving.
-11. Write the workflow map summarizing everything discovered.
+1. Peça à pessoa que descreva o processo de ponta a ponta. Com o que ela começa? Com o que termina? Use as respostas do setup como ponto de partida.
+2. Identifique os estágios distintos. Mire de 3 a 5. Onde uma tarefa termina e outra começa? Procure pontos naturais onde um humano vai querer revisar antes de continuar.
+3. Para cada estágio, pergunte:
+   - O que entra? (arquivos, decisões da pessoa, saída do estágio anterior)
+   - O que sai? (o material que aquele estágio produz)
+   - O que a IA precisa saber? (regras, exemplos, modelos, restrições)
+4. Identifique o contexto compartilhado. Que informação é usada em vários estágios? (o tom, um padrão de correção, um design)
+5. Identifique o que varia a cada uso. O que muda de um trabalho para outro? (o PDF da vez, a turma, a disciplina). Isso vira variável.
+6. Identifique estágios opcionais. Algum estágio que a pessoa às vezes pula?
+7. Se a pessoa colocou documentos em `meus-materiais/`, leia-os para entender o processo real dela. Se precisar de inspiração, mostre um dos exemplos de docência.
+8. **[Ponto de parada]** Apresente o rascunho do mapa do processo. Pergunte: todos os estágios estão capturados? Falta alguma entrada ou saída? Algum estágio para juntar ou separar?
+9. Rode a auditoria abaixo. Se algo falhar, ajuste antes de salvar.
+10. Escreva o mapa do processo resumindo o que foi descoberto.
 
-## Checkpoints
+## Pontos de parada
 
-| After Step | Agent Presents | Human Decides |
-|------------|---------------|---------------|
-| 8 | Draft workflow map: all stages with inputs/outputs, shared context, variables, tools, skills | Whether the stage breakdown, handoff points, and shared context are correct |
+| Depois do passo | O agente apresenta | O humano decide |
+|-----------------|--------------------|-----------------|
+| 7 | Rascunho do mapa: estágios com entradas/saídas, contexto compartilhado, variáveis, estágios opcionais | Se a divisão de estágios, os pontos de handoff e o contexto compartilhado estão corretos |
 
-## Audit
+## Auditoria
 
-| Check | Pass Condition |
-|-------|---------------|
-| Stage clarity | Every stage has a clear single responsibility and a named output artifact |
-| Input/output chain | Every stage's inputs are either user-provided or produced by a prior stage |
-| Shared context identified | Cross-stage resources (brand, design, audience) are listed separately from stage-specific references |
-| Variable coverage | Every user-specific detail is captured as a named placeholder variable |
+| Verificação | Condição de aprovação |
+|-------------|-----------------------|
+| Clareza dos estágios | Cada estágio tem uma responsabilidade única e um resultado nomeado |
+| Cadeia de entrada/saída | A entrada de cada estágio vem da pessoa ou de um estágio anterior |
+| Contexto compartilhado | Os recursos usados em vários estágios estão listados à parte |
+| Cobertura de variáveis | Todo detalhe que varia a cada uso está registrado como variável |
 
-## Outputs
+## Saídas
 
-| Artifact | Location | Format |
-|----------|----------|--------|
-| Workflow map | `output/workflow-map.md` | Structured doc: stages with inputs/outputs, shared context, user-specific variables, optional stages, tool prerequisites, selected skills |
+| Artefato | Local | Formato |
+|----------|-------|---------|
+| Mapa do processo | `output/workflow-map.md` | Documento estruturado: estágios com entradas/saídas, contexto compartilhado, variáveis, estágios opcionais |
