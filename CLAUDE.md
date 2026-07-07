@@ -9,6 +9,7 @@ model-workspace-protocol/
 ├── CLAUDE.md                          (you are here)
 ├── README.md                          (project overview)
 ├── LICENSE
+├── oficina/                           (planejamento da oficina VIII Concefor; só organizadores, fora da versão dos participantes)
 ├── _core/                             (shared conventions and templates)
 │   ├── CONVENTIONS.md                 (source of truth for all patterns)
 │   ├── placeholder-syntax.md          (how {{VARIABLES}} work)
@@ -26,6 +27,7 @@ model-workspace-protocol/
 | Create content with script-to-animation | `workspaces/script-to-animation/CLAUDE.md` |
 | Build course slide decks from source material | `workspaces/course-deck-production/CLAUDE.md` |
 | Build a new workspace for any domain | `workspaces/workspace-builder/CLAUDE.md` |
+| Planejar a oficina do VIII Concefor | `oficina/CONTEXT.md` |
 | Read the full MWP specification | `_core/CONVENTIONS.md` |
 | Understand the placeholder system | `_core/placeholder-syntax.md` |
 | Use a template for a new workspace | `_core/templates/` |
