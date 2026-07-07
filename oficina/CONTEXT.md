@@ -6,6 +6,7 @@ Pasta de trabalho de Marcos e Elton para planejar a oficina de 20/08/2026. Esta 
 
 | Você quer... | Abra |
 |--------------|------|
+| Ver onde paramos e os próximos passos | `estado-do-projeto.md` |
 | Ver o que foi decidido na reunião e as pendências | `decisoes-reuniao-2026-07-07.md` |
 | Ver o roteiro da oficina com blocos e tempos | `plano-da-oficina.md` |
 | Preencher o formulário de divulgação da Márcia | `formulario-concefor.md` |
