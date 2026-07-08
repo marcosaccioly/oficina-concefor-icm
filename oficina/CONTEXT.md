@@ -12,11 +12,13 @@ Pasta de trabalho de Marcos e Elton para planejar a oficina de 20/08/2026. Esta 
 | Preparar máquinas, materiais e testes | `checklist-preparacao.md` |
 | Adaptar o repositório para a versão dos participantes | `adaptacoes-workspace-builder.md` |
 | Imprimir a dinâmica de papel e caneta | `folha-mapeamento.md` |
+| Ver a pesquisa GitHub sobre ICM e educação | `pesquisa-github-icm-educacao.md` |
 
 ## Fontes
 
 - Reunião de planejamento de 07/07/2026 (Marcos e Elton, transcrição Tactiq): https://app.tactiq.io/api/2/u/m/r/eqjq3VsNLP8gCOSTDb1L?o=txt
 - Formulário "Eventos Satélites do VIII Concefor" (Google Forms, enviado pela Márcia)
+- Pesquisa GitHub sobre ICM e educação: `pesquisa-github-icm-educacao.md`
 
 ## Convenção desta pasta
 

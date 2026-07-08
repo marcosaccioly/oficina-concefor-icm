@@ -24,7 +24,7 @@ Como transformar o ICM na versão que vai para as máquinas dos participantes. A
 | `shared/contexto-oficina.md` (novo) | Ficha que a IA lê sempre: o que é o evento, facilitadores (Marcos e Elton), público professor, linguagem simples e sem jargão, hora de início e duração do turno. A IA ajuda a administrar o tempo quando perguntada. |
 | `stages/01-discovery/CONTEXT.md` | Traduzir. Modo oficina: mirar processos de 3 a 5 estágios; pular o passo 8 (busca de skills no GitHub: depende de rede e consome tempo); manter um único checkpoint. |
 | `stages/02` a `05` | Traduzir os CONTEXT.md. Deixar claro que a meta do dia é chegar ao estágio 03 (scaffolding); 04 e 05 ficam como lição de casa guiada. |
-| `references/examples/` | Adicionar 3 resumos de 1 página em pt-BR como inspiração: caso Carlos (PDF para aula interativa), avaliador de salas virtuais no estilo do professor, devolutivas de atividades. |
+| `references/examples/` | Adicionar 3 resumos de 1 página em pt-BR como inspiração: caso Carlos (PDF para aula interativa), fábrica de courseware inspirada em `alfredang/wsq-courseware-generator-claude-streamlit`, e plano de aula reutilizável inspirado em `AndyJuang/lesson-plan-skill`. Ver `oficina/pesquisa-github-icm-educacao.md`. |
 | `meus-materiais/` (novo) | Pasta vazia (com .gitkeep) onde o participante coloca os documentos que trouxe. Referenciada no discovery e no scaffolding. |
 | `references/publicar-no-github.md` (novo) | Mini guia do bloco opcional: criar conta, autenticar no VS Code, criar repositório, enviar. |
 
