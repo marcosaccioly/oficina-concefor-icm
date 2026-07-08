@@ -10,6 +10,7 @@ Pasta de trabalho de Marcos e Elton para planejar a oficina de 20/08/2026. Esta 
 | Ver o que foi decidido na reunião e as pendências | `decisoes-reuniao-2026-07-07.md` |
 | Ver o roteiro da oficina com blocos e tempos | `plano-da-oficina.md` |
 | Preencher o formulário de divulgação da Márcia | `formulario-concefor.md` |
+| Gerar a imagem de divulgação | `prompt-imagem-divulgacao.md` |
 | Preparar máquinas, materiais e testes | `checklist-preparacao.md` |
 | Adaptar o repositório para a versão dos participantes | `adaptacoes-workspace-builder.md` |
 | Imprimir a dinâmica de papel e caneta | `folha-mapeamento.md` |
