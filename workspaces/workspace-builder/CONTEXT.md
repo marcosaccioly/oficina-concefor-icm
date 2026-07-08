@@ -1,20 +1,22 @@
-# Workspace Builder
+# Construtor de Workspace
 
-Build new MWP workspaces for any domain through a five-stage guided process.
+Constrói novos workspaces ICM para qualquer domínio, através de um processo guiado de cinco estágios. Na oficina, use apenas em português e leia `shared/contexto-oficina.md` antes de começar.
 
-## Task Routing
+## Roteamento de tarefas
 
-| Task Type | Go To | Description |
-|-----------|-------|-------------|
-| Discover a workflow | `stages/01-discovery/CONTEXT.md` | Conversational exploration of the domain workflow |
-| Map stage contracts | `stages/02-mapping/CONTEXT.md` | Formalize inputs, process, outputs for each stage |
-| Scaffold the workspace | `stages/03-scaffolding/CONTEXT.md` | Generate the complete folder structure and files |
-| Design onboarding | `stages/04-questionnaire-design/CONTEXT.md` | Build the setup questionnaire for the new workspace |
-| Validate the workspace | `stages/05-validation/CONTEXT.md` | Verify conventions and cross-references |
+| Tipo de tarefa | Vá para | Descrição |
+|----------------|---------|-----------|
+| Descobrir um processo | `stages/01-discovery/CONTEXT.md` | Conversa para mapear o processo do participante |
+| Mapear contratos de estágio | `stages/02-mapping/CONTEXT.md` | Formalizar entradas, processo e saídas de cada estágio |
+| Gerar o esqueleto | `stages/03-scaffolding/CONTEXT.md` | Criar a estrutura completa de pastas e arquivos |
+| Desenhar o onboarding | `stages/04-questionnaire-design/CONTEXT.md` | Montar o questionário de setup do novo workspace |
+| Validar o workspace | `stages/05-validation/CONTEXT.md` | Conferir convenções e referências cruzadas |
 
-## Reference Materials
+## Materiais de referência
 
-| Resource | Location | Contains |
-|----------|----------|----------|
-| MWP conventions | `references/conventions-reference.md` | Pointer to core conventions (the rules for building workspaces) |
-| Completed example | `references/examples/script-to-animation-summary.md` | Summary of the script-to-animation workspace |
+| Recurso | Local | Contém |
+|---------|-------|--------|
+| Contexto da oficina | `shared/contexto-oficina.md` | O evento, o público, o tom e a meta do dia |
+| Convenções do ICM | `references/conventions-reference.md` | Ponteiro para as convenções centrais |
+| Exemplos de docência | `references/examples/` | Casos prontos (Carlos, salas virtuais, devolutivas) como inspiração |
+| Materiais do participante | `meus-materiais/` | Documentos que a pessoa trouxe do próprio trabalho |

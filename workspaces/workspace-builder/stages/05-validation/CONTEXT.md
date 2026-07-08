@@ -1,50 +1,36 @@
-# Stage 05: Validation
+# Estágio 05: Validação
 
-Verify the generated workspace against MWP conventions and fix any issues before the workspace ships.
+Conferir o workspace gerado contra as convenções do ICM e corrigir problemas antes de entregar. Na oficina, este estágio é continuação: faça-o depois, com a IA, quando o workspace estiver montado.
 
-## Inputs
+## Entradas
 
-| Source | File/Location | Section/Scope | Why |
-|--------|--------------|---------------|-----|
-| Scaffolding output | `../03-scaffolding/output/` | Entire generated workspace | The workspace to validate |
-| Questionnaire output | `../04-questionnaire-design/output/questionnaire.md` | Full file | Verify placeholder coverage |
-| Core conventions | `/_core/CONVENTIONS.md` | Full file | The rules to validate against |
-| Placeholder syntax | `/_core/placeholder-syntax.md` | Full file | Conditional section rules |
+| Fonte | Arquivo/Local | Seção/Escopo | Por quê |
+|-------|---------------|--------------|---------|
+| Esqueleto | `../03-scaffolding/output/` | Workspace gerado inteiro | O workspace a validar |
+| Questionário | `../04-questionnaire-design/output/questionnaire.md` | Arquivo todo | Conferir a cobertura de variáveis |
+| Convenções | `/_core/CONVENTIONS.md` | Arquivo todo | As regras a validar |
+| Sintaxe | `/_core/placeholder-syntax.md` | Arquivo todo | Regras de seções condicionais |
 
-## Process
+## Processo
 
-Run each check below. Record pass/fail and any issues found.
+Rode cada verificação abaixo. Registre aprovado/reprovado e os problemas encontrados.
 
-1. **Cross-reference integrity.** Every file path mentioned in any CONTEXT.md Inputs table must point to a real file in the generated workspace. List any broken references.
+1. **Integridade das referências.** Todo caminho citado em qualquer CONTEXT.md aponta para um arquivo que existe. Liste referências quebradas.
+2. **Sem dependências circulares.** Trace o grafo de referências. Se A referencia B, B não referencia A. Confirme que é um grafo sem ciclos.
+3. **Cobertura de variáveis.** Varra os arquivos atrás de `{{VARIAVEL}}`. Toda variável tem pergunta no questionário; toda pergunta aponta para pelo menos um arquivo. Liste órfãos.
+4. **Seções condicionais válidas.** Todo bloco `{{?SECAO}}...{{/SECAO}}` envolve uma seção inteira (um título e todo o conteúdo abaixo). Sinalize violações.
+5. **Cadeia de handoff.** A saída do estágio N bate com o que o estágio N+1 lê. Liste a cadeia e aponte falhas.
+6. **Pureza dos CONTEXT.md.** Nenhum CONTEXT.md contém conteúdo de referência (definições, regras extensas, exemplos). Só: título, descrição, Entradas, Processo, Pontos de parada (opcional), Auditoria (opcional), Saídas.
+7. **Pontos de parada nos estágios criativos.** Estágios de escrita, design ou ideação têm pelo menos um ponto de parada, com números de passo válidos. Estágios lineares podem pular.
+8. **Auditorias nos estágios criativos e de construção.** Esses estágios têm uma auditoria com condições claras, rodada antes de salvar.
+9. **Contagem de linhas.** Sinalize CONTEXT.md acima de 80 linhas e arquivos de referência acima de 200.
+10. **Convenções de nome.** Pastas e arquivos em minúsculas-com-hífen. Pastas de estágio com números (01-, 02-). Pastas output/ vazias têm .gitkeep.
+11. **Qualidade.** Procure travessões longos (troque por hífen), jargão sem explicação e erros de formatação markdown.
 
-2. **No circular dependencies.** Trace the reference graph. If Stage A references Stage B, Stage B must not reference Stage A (directly or through other stages). Draw the dependency graph and confirm it is a directed acyclic graph.
+Se achar problemas, corrija nos arquivos do workspace e rode de novo as verificações que falharam.
 
-3. **Placeholder coverage.** Scan all markdown files for `{{PLACEHOLDER}}` patterns. Every placeholder found must have a corresponding question in the questionnaire. Every question must map to at least one file that contains its placeholder. List any orphaned placeholders or orphaned questions.
+## Saídas
 
-4. **Conditional section validity.** Every `{{?SECTION}}...{{/SECTION}}` block must wrap a complete section (a heading and all content below it). No inline conditional wrapping. Flag any violations.
-
-5. **Stage handoff chain.** Verify the chain is unbroken: Stage N's output location must match what Stage N+1's Inputs table references. List the chain and flag any gaps.
-
-6. **CONTEXT.md purity.** Verify no CONTEXT.md file contains actual reference content (definitions, extended rules, examples, guidelines). They should contain only: title, description, Inputs table, Process steps, Checkpoints table (optional), Audit table (optional), Outputs table.
-
-7. **Checkpoints in creative stages.** Verify that stages doing creative work (writing, design, ideation) have at least one checkpoint. Verify checkpoint tables reference valid process step numbers. Linear stages (extract, render, validate) may skip checkpoints.
-
-8. **Audits in creative/build stages.** Verify that stages doing creative or build work have an Audit section with specific, unambiguous pass conditions. Verify the audit runs after the process steps and before output is written.
-
-9. **Contract purity in spec stages.** If the workspace has a specification stage, verify its output format defines WHAT and WHEN, not HOW. Check for component names, frame numbers, prop definitions, or spring configs in spec reference files. These are implementation details that belong to the build stage.
-
-10. **Line count check.** Flag any CONTEXT.md over 80 lines. Flag any reference file over 200 lines.
-
-11. **Naming conventions.** All folder and file names are lowercase-with-hyphens. Stage folders use zero-padded numbers (01-, 02-). Empty output/ folders have .gitkeep files.
-
-12. **Tool prerequisites.** If the workspace has a prerequisites/ folder or tool setup guides: verify prerequisites/CONTEXT.md lists every tool, verify each listed tool has a setup guide, verify setup guides include install steps and verification commands, and verify the questionnaire asks whether optional tools are needed (so conditional stages can be removed).
-
-13. **Quality scan.** Check for em dashes (replace with --), jargon without explanation, and markdown formatting issues.
-
-If issues are found, fix them in the scaffolded workspace files, then re-run the failed checks to confirm the fix.
-
-## Outputs
-
-| Artifact | Location | Format |
-|----------|----------|--------|
-| Validation report | `output/validation-report.md` | Checklist with pass/fail per check, issues found, fixes applied |
+| Artefato | Local | Formato |
+|----------|-------|---------|
+| Relatório de validação | `output/validation-report.md` | Lista com aprovado/reprovado por verificação, problemas e correções aplicadas |
